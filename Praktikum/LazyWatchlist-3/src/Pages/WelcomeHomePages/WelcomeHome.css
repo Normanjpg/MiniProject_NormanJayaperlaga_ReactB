@@ -1,0 +1,58 @@
+
+
+.my-home-section {
+    background-size: cover;
+    background-color: var(--bg-gray);
+    padding-top: 40px;
+    width: 100%;
+    min-height: 100%;
+  }
+
+.box-welcome-title {
+    padding: 12px;
+    font-weight: bolder;
+    color: var(--light);
+
+    background-color: var(--light-gray);
+    display: flex;
+}
+
+.box-welcome-text-red {
+    color: var(--red);
+}
+
+
+.box-welcome-content {
+    font-size: 18px;
+    padding: 0 15px;
+    background-color: var(--light-gray);
+    display: flex; 
+    color: var(--light);
+}
+.box-welcome-imglogo {
+    height: 80px;
+    width: 100px;
+    margin: 0px 50px 10px 0px;
+    display: flex;
+}
+
+/* Popular */
+.welcome-popular-title {
+    background-color: var(--bg-gray);
+    color: white;
+}
+
+.welcome-movie-container {
+    background-color: var(--bg-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 30px;
+}
+
+.welcome-movie-wrapper {
+    width: 500px;
+    background-color: var(--light-gray);
+    color: black;
+}
