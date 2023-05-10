@@ -43,7 +43,7 @@ const MoviePages = () => {
   const searchpagesMovie = async (q) => {
     if (q.length > 3) {
       const query = await searchMovie(q);
-      setlatestMovie(query.result);
+      setPopularMovie(query.results)
     }
   };
 
