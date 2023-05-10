@@ -46,13 +46,39 @@
     background-color: var(--bg-gray);
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
     align-items: center;
     color: white;
     gap: 30px;
 }
 
 .welcome-movie-wrapper {
-    width: 500px;
+    width: 300px;
     background-color: var(--light-gray);
     color: black;
+}
+
+.welcome-movie-title {
+    height: 50px;
+    margin: 10px 20px 30px 20px;
+    font-size: 26px;
+    font-weight: bolder;
+}
+
+.welcome-movie-date {
+    margin-top: 15px;
+    font-style: italic;
+}
+
+.welcome-movie-rate {
+    color: var(--red);
+    margin: 10px 50px 10px 20px;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.welcome-movie-rate img {
+    margin: 0 10px;
+    height: 33px;
 }

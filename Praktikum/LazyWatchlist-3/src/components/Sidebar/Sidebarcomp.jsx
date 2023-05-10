@@ -3,33 +3,6 @@ import "./Sidebarcomp.css";
 import { NavLink } from "react-router-dom";
 
 const Sidebarcomp = ({isExpanded, setExpandState}) => {
-//   const [isExpanded, setExpandState] = useState(false);
-//   const menuItemsnav = [
-//     {
-//       text: "Home",
-//       icon: "../../src/assets/iconsvg/home.svg",
-//     },
-//     {
-//       text: "Admin Profile",
-//       icon: "../../src/assets/iconsvg/movie.svg",
-//     },
-//     {
-//       text: "Messages",
-//       icon: "../../src/assets/iconsvg/series.svg",
-//     },
-//     {
-//       text: "Analytics",
-//       icon: "../../src/assets/iconsvg/Mplaylist.svg",
-//     },
-//     {
-//       text: "Saved Items",
-//       icon: "../../src/assets/icons/heart.svg",
-//     },
-//     {
-//       text: "Setting",
-//       icon: "../../src/assets/icons/settings.svg",
-//     },
-//   ];
   return (
     <div
       className={
@@ -70,17 +43,6 @@ const Sidebarcomp = ({isExpanded, setExpandState}) => {
           </button>
         </div>
         <div className="nav-menu">
-          {/* {menuItemsnav.map(({ text, icon }, sideindex) => (
-            <a
-              href="#"
-              className={isExpanded ? "menu-item" : "menu-item menu-item-NX"}
-              key={sideindex}
-            >
-              <img src={icon} alt="" srcSet="" />
-              {isExpanded && <p>{text}</p>}
-              {isExpanded && <div className="tooltip">{text}</div>}
-            </a>
-          ))} */}
           <NavLink
           to="/"
             href="#"
@@ -106,6 +68,7 @@ const Sidebarcomp = ({isExpanded, setExpandState}) => {
             {isExpanded && <p>Series</p>}
           </NavLink>
           <NavLink
+          to="/savedwatchlist"
             href="#"
             className={isExpanded ? "menu-item" : "menu-item menu-item-NX"}
           >
@@ -121,6 +84,7 @@ const Sidebarcomp = ({isExpanded, setExpandState}) => {
 
 
           <NavLink
+          to="/createwatchlist"
             className={isExpanded ? "menu-item-add" : "menu-item-add menu-item-add-NX"}
           >
             <img src="../../src/assets/iconsvg/createwatchlist.svg" alt="" />
