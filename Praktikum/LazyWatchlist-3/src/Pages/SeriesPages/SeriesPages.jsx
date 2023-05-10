@@ -4,7 +4,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import {
   getSeriesList,
   baseImgUrl,
-  searchMovie,
+  searchSeries,
 } from "../../config/apimovie/apimovie.js";
 
 const SeriesPages = () => {
@@ -45,10 +45,10 @@ const SeriesPages = () => {
     });
   };
 
-  const searchpagesMovie = async (q) => {
-    if (q.length > 3) {
-      const query = await searchMovie(q);
-      setlatestMovie(query.result);
+  const searchpagesSeries = async (s) => {
+    if (s.length > 3) {
+      const queryseries = await searchSeries(s)
+      setPopularSeries(queryseries.results);
     }
   };
 
@@ -60,7 +60,7 @@ const SeriesPages = () => {
             <input
               className="form-control me-2"
               placeholder="Search Movie by Title"
-              onChange={({ target }) => searchpagesMovie(target.value)}
+              onChange={({ target }) => searchpagesSeries(target.value)}
               aria-label="Search"
             />
           </div>

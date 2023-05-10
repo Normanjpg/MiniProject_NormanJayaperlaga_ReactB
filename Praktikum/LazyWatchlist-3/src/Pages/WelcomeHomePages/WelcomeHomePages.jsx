@@ -4,12 +4,11 @@ import { Row, Col, Container } from "react-bootstrap";
 import {
   getTrendingMediaList,
   baseImgUrl,
-  searchMovie,
+  searchAll,
 } from "../../config/apimovie/apimovie.js";
 
 const WelcomeHomePages = () => {
   const [popularMedia, setPopularMedia] = useState([]);
-  // const [popularQuery, setPopularQuery] = useState("");
 
   useEffect(() => {
     getTrendingMediaList().then((result) => {
@@ -41,20 +40,10 @@ const WelcomeHomePages = () => {
     });
   };
 
-  // const searchpopular = (q) => {
-  //   q.preventDefault();
-  //   setPopularQuery(q.target.value);
-  //   fetch(searchMovie())
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // };
-
-  const searchpopular = async (q) => {
-    if (q.length > 3) {
-      const query = await searchMovie(q);
-      setPopularMedia(query.result);
+  const searchpopular = async (t) => {
+    if (t.length > 3) {
+      const queryAll = await searchAll(t);
+      setPopularMedia(queryAll.results);
     }
   };
 
