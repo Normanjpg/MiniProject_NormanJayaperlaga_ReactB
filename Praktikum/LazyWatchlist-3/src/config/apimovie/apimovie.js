@@ -10,15 +10,15 @@ export const getTrendingMediaList = async () => {
     return trending.data.results
 }
 
+export const searchAll = async (t) => {
+    const allsearch = await axios.get(`${baseUrl}/search/movie?query=${t}&api_key=${apiKey}&page1`)
+    return allsearch.data
+}
 export const getMovieList = async () => {
     const movie = await axios.get(`${baseUrl}/movie/popular?api_key=${apiKey}&page=1`)
     return movie.data.results
 }
 
-export const searchAll = async (t) => {
-    const allsearch = await axios.get(`${baseUrl}/search/movie?query=${t}&api_key=${apiKey}&page1`)
-    return allsearch.data
-}
 
 export const searchMovie = async (q) => {
     const moviesearch = await axios.get(`${baseUrl}/search/movie?query=${q}&api_key=${apiKey}&page1`)
