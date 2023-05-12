@@ -2,59 +2,48 @@ import React, { useEffect, useState } from "react";
 import "./WelcomeHome.css";
 import { Row, Col, Container } from "react-bootstrap";
 import {
-  getMovieList,
+  getTrendingMediaList,
   baseImgUrl,
-  searchMovie,
+  searchAll,
 } from "../../config/apimovie/apimovie.js";
 
 const WelcomeHomePages = () => {
-  const [popularMovies, setPopularMovie] = useState([]);
-  // const [popularQuery, setPopularQuery] = useState("");
+  const [popularMedia, setPopularMedia] = useState([]);
 
   useEffect(() => {
-    getMovieList().then((result) => {
-      setPopularMovie(result);
+    getTrendingMediaList().then((result) => {
+      setPopularMedia(result);
     });
   }, []);
 
-  const PopularMovieList = () => {
-    return popularMovies.map((movie, i) => {
+  const PopularMediaList = () => {
+    return popularMedia.map((trending, i) => {
       return (
         <div className="welcome-movie-wrapper" key={i}>
           <div className="welcome-movie-title" style={{ fontWeight: "bold" }}>
-            {movie.title}
+            {trending.title}
           </div>
           <img
-            src={`${baseImgUrl}/${movie.poster_path}`}
+            src={`${baseImgUrl}/${trending.poster_path}`}
             className="welcome-movie-image"
           />
           <div className="welcome-movie-date">
-            Release Date: {movie.release_date}
+            Release Date: {trending.release_date}
           </div>
 
           <div className="welcome-movie-rate">
             <img src="../../src/assets/iconsvg/rated.svg" alt="rated" />
-            {movie.vote_average}
+            {trending.vote_average}
           </div>
         </div>
       );
     });
   };
 
-  // const searchpopular = (q) => {
-  //   q.preventDefault();
-  //   setPopularQuery(q.target.value);
-  //   fetch(searchMovie())
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // };
-
-  const searchpopular = async (q) => {
-    if (q.length > 3) {
-      const query = await searchMovie(q);
-      setPopularMovie(query.result);
+  const searchpopular = async (t) => {
+    if (t.length > 3) {
+      const queryAll = await searchAll(t);
+      setPopularMedia(queryAll.results);
     }
   };
 
@@ -107,10 +96,10 @@ const WelcomeHomePages = () => {
         </Row>
         <Row>
           <div className="welcome-popular-title">
-            <h1>Popular Movie Right Now</h1>
+            <h1>Trending Right Now</h1>
           </div>
           <div className="welcome-movie-container">
-            <PopularMovieList />
+            <PopularMediaList />
           </div>
         </Row>
       </Container>

@@ -104,6 +104,11 @@ const Sidebarcomp = ({isExpanded, setExpandState}) => {
                 <p className="nav-footer-user-name">Michael</p>
                 <p className="nav-footer-user-position">guest account</p>
               </div>
+              <img
+                className="nav-footer-setting"
+                src="../../src/assets/icons/settings.svg"
+                alt=""
+              />
             </div>
           )}
           <img

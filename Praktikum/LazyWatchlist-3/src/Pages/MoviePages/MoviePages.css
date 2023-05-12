@@ -1,0 +1,46 @@
+
+.popular-title {
+    background-color: var(--bg-gray);
+    color: white;
+}
+
+.movie-container {
+    background-color: var(--bg-gray);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+    align-items: center;
+    color: white;
+    gap: 30px;
+}
+
+.movie-wrapper {
+    width: 300px;
+    background-color: var(--light-gray);
+    color: black;
+}
+
+.movie-title {
+    height: 50px;
+    margin: 10px 20px 30px 20px;
+    font-size: 26px;
+    font-weight: bolder;
+}
+
+.movie-date {
+    margin-top: 15px;
+    font-style: italic;
+}
+
+.movie-rate {
+    color: var(--red);
+    margin: 10px 50px 10px 20px;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+.movie-rate img {
+    margin: 0 10px;
+    height: 33px;
+}

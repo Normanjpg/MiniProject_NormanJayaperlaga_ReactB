@@ -219,6 +219,15 @@
     color: var(--gray);
 }
 
+.nav-footer-setting {
+    width: 30px;
+    margin: auto;
+}
+
+.nav-footer-setting:hover {
+    background-color: var(--primary);
+}
+
 .logout-icon {
     width: 30px;
     margin: 25px 35px;

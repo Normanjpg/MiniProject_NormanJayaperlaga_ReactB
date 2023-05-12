@@ -1,148 +1,76 @@
-import React from 'react'
-import { Card, Col, Container, Row, Button } from "react-bootstrap";
-
+import React, { useEffect, useState } from "react";
+import "./MoviePages.css";
+import { Row, Col, Container } from "react-bootstrap";
+import {
+  getMovieList,
+  baseImgUrl,
+  searchMovie,
+} from "../../config/apimovie/apimovie.js";
 
 const MoviePages = () => {
-  return (
-    <div className="main-list-bg pb-5" id="ListPreview">
-    <Container>
-      <h1 className="text-center text-dark mb-3 pt-2">List Movie</h1>
-      <Row>
-        <Col>
-          <Card style={{ height: "35rem" }}>
-            <Card.Img
-              variant="top"
-              src="http://image.tmdb.org/t/p/w500//1OemPTXG3gRPfjX7FNoIjOi05FU.jpg"
-            />
-            <Card.Body>
-              <Card.Title>
-                Ultraman Zero: The Revenge of Belial (2010)
-              </Card.Title>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card style={{ height: "35rem" }}>
-            <Card.Img
-              variant="top"
-              src="http://image.tmdb.org/t/p/w500//q719jXXEzOoYaps6babgKnONONX.jpg"
-            />
-            <Card.Body>
-              <Card.Title>Your Name (2016)</Card.Title>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card style={{ height: "35rem" }}>
-            <Card.Img
-              variant="top"
-              src="http://image.tmdb.org/t/p/w500//qgrk7r1fV4IjuoeiGS5HOhXNdLJ.jpg"
-            />
-            <Card.Body>
-              <Card.Title>Weathering With You (2019)</Card.Title>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card style={{ height: "35rem" }}>
-            <Card.Img
-              variant="top"
-              src="http://image.tmdb.org/t/p/w500//vIeu8WysZrTSFb2uhPViKjX9EcC.jpg"
-            />
-            <Card.Body>
-              <Card.Title>Suzume (2022)</Card.Title>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card style={{ height: "35rem" }}>
-            <Card.Img
-              variant="top"
-              src="http://image.tmdb.org/t/p/w500//2szdEK0Mr0RG0nWGFVTseNQHbnP.jpg"
-            />
-            <Card.Body>
-              <Card.Title>
-                Sword Art Online: The Movie-Ordinal Scale (2017)
-              </Card.Title>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <h1 className="text-center text-dark mb-3 pt-4">List Series</h1>
-      <Row>
-        <Col>
-          <Card style={{ height: "35rem" }}>
-            <Card.Img
-              variant="top"
-              src="http://image.tmdb.org/t/p/w500//1OemPTXG3gRPfjX7FNoIjOi05FU.jpg"
-            />
-            <Card.Body>
-              <Card.Title>
-                Ultraman Zero: The Revenge of Belial (2010)
-              </Card.Title>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card style={{ height: "35rem" }}>
-            <Card.Img
-              variant="top"
-              src="http://image.tmdb.org/t/p/w500//q719jXXEzOoYaps6babgKnONONX.jpg"
-            />
-            <Card.Body>
-              <Card.Title>Your Name (2016)</Card.Title>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card style={{ height: "35rem" }}>
-            <Card.Img
-              variant="top"
-              src="http://image.tmdb.org/t/p/w500//qgrk7r1fV4IjuoeiGS5HOhXNdLJ.jpg"
-            />
-            <Card.Body>
-              <Card.Title>Weathering With You (2019)</Card.Title>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card style={{ height: "35rem" }}>
-            <Card.Img
-              variant="top"
-              src="http://image.tmdb.org/t/p/w500//vIeu8WysZrTSFb2uhPViKjX9EcC.jpg"
-            />
-            <Card.Body>
-              <Card.Title>Suzume (2022)</Card.Title>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card style={{ height: "35rem" }}>
-            <Card.Img
-              variant="top"
-              src="http://image.tmdb.org/t/p/w500//2szdEK0Mr0RG0nWGFVTseNQHbnP.jpg"
-            />
-            <Card.Body>
-              <Card.Title>
-                Sword Art Online: The Movie-Ordinal Scale (2017)
-              </Card.Title>
-              <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Container>
-  </div>
-  )
-}
+  const [popularMovies, setPopularMovie] = useState([]);
 
-export default MoviePages
+  useEffect(() => {
+    getMovieList().then((result) => {
+      setPopularMovie(result);
+    });
+  }, []);
+
+  const PopularMovieList = () => {
+    return popularMovies.map((movie, i) => {
+      return (
+        <div className="welcome-movie-wrapper" key={i}>
+          <div className="welcome-movie-title" style={{ fontWeight: "bold" }}>
+            {movie.title}
+          </div>
+          <img
+            src={`${baseImgUrl}/${movie.poster_path}`}
+            className="welcome-movie-image"
+          />
+          <div className="welcome-movie-date">
+            Release Date: {movie.release_date}
+          </div>
+
+          <div className="welcome-movie-rate">
+            <img src="../../src/assets/iconsvg/rated.svg" alt="rated" />
+            {movie.vote_average}
+          </div>
+        </div>
+      );
+    });
+  };
+
+  const searchpagesMovie = async (q) => {
+    if (q.length > 3) {
+      const query = await searchMovie(q);
+      setPopularMovie(query.results)
+    }
+  };
+
+  return (
+    <div className="my-home-section" id="welcome">
+      <Container>
+        <Row>
+          <div className="p-4">
+            <input
+              className="form-control me-2"
+              placeholder="Search Movie by Title"
+              onChange={({ target }) => searchpagesMovie(target.value)}
+              aria-label="Search"
+            />
+          </div>
+        </Row>
+        <Row>
+          <div className="popular-title">
+            <h1>Popular Movie</h1>
+          </div>
+          <div className="movie-container">
+            <PopularMovieList />
+          </div>
+        </Row>
+      </Container>
+    </div>
+  );
+};
+
+export default MoviePages;
